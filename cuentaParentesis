@@ -1,0 +1,38 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package pilas;
+
+/**
+ *
+ * @author Alejandro Castillo
+ */
+public class RevisorParentesisConPilas {
+    
+    public boolean cuentaParentesis(String cadena){
+        PilaA<Character> pila = new PilaA<>();
+        int i = 0;
+        boolean resp = true;
+        char caracter;
+        
+        while(i < cadena.length() && resp){
+            caracter = cadena.charAt(i);
+            if(caracter == '('){
+                pila.push(caracter);
+            } else {
+                if (caracter == ')'){
+                    if(pila.isEmpty()){
+                       resp = false;
+                    } else {
+                        pila.pop();
+                    }
+                }
+            }
+            i++;
+        }
+        return resp && pila.isEmpty();
+    }
+}
+
+
